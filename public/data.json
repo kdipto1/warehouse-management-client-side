@@ -6,5 +6,77 @@
     "price": 50500,
     "quantity": 10,
     "supplier": "Toyota Bangladesh ltd."
+  },
+  {
+    "name": "Honda CR-V Hybrid",
+    "image": "https://automobiles.honda.com/-/media/Honda-Automobiles/Vehicles/2022/CR-V/Non-VLP/Global-Nav/MY21-CR-V-HYBRID-non-VLP-nav-B-588P-2x.png",
+    "description": "The CR-V Hybrid offers miles and miles of driving fun, with all-wheel drive, 212 total system horsepower  And with loads of cargo space, this hybrid SUV brings an extra level of versatility to the Honda lineup of electrified vehicles.",
+    "price": 31610,
+    "quantity": 8,
+    "supplier": "Honda Bangladesh ltd."
+  },
+  {
+    "name": "Lexus LX 2022",
+    "image": "https://www.lexus.com/content/dam/lexus/images/models/lx/2022/visualizer/600/exterior/20-inch-alloy-wheels-with-machined-finish/eminent-white-pearl/large-1.jpg",
+    "description": "Completely reimagined for 2022, the all-new LX represents the next chapter of flagship luxury. Its exterior, a study in sophistication and strength, exhibits a silhouette that perfectly complements any road, on-road or off.* And the first-ever LX F SPORT Handling elevates your drive to its most visceral heights. Featuring aerodynamically enhanced bodywork, exclusive 22-inch wheels and a race-inspired interior, this SUV stands in a class of its own.",
+    "price": 88245,
+    "quantity": 10,
+    "supplier": "Lexus Bangladesh ltd."
+  },
+  {
+    "name": "Hyundai CRETA 2022",
+    "image": "https://www.hyundai.com/content/dam/hyundai/ww/en/images/find-a-car/all-vehicles/creta-su2-creta-side-view-polar-white.png",
+    "description": "The all-new Creta rewrites the book on compact crossovers. The style is sensuous and sporty, reflecting Cretas impressive dynamic capabilities and fun-loving driving personality.",
+    "price": 26900,
+    "quantity": 16,
+    "supplier": "HNS Automobiles."
+  },
+  {
+    "name": "BMW X7",
+    "image": "https://www.bmwusa.com/content/dam/bmwusa/XModels/X7/model-page/alpina/MYU21-Alpina-XB7-Gallery-09.jpg",
+    "description": "The first-ever BMW X7 is the elegant fusion of presence and personality. Despite its majestic appearance, it gives an impression of lightness and agility thanks to the puristic design and athletic styling. At the same time, the considerable spaciousness of the interior offers a pioneering interplay of exclusivity, functionality and freedom incomparable comfort all the way to the third row of seats. Charm is its essence. Elegance its character.",
+    "price": 84900,
+    "quantity": 10,
+    "supplier": "BMW Bangladesh ltd."
+  },
+  {
+    "name": "Toyota C-HR 2022",
+    "image": "https://www.toyota.com/imgix/content/dam/toyota/jellies/max/2022/c-hr/limited/2408/089/2.png?fm=webp&w=930&q=90",
+    "description": "C-HRs striking exterior stands out from the crowd. With its eye-catching front end and modern color palette, C-HR looks sharper than ever.",
+    "price": 24130,
+    "quantity": 10,
+    "supplier": "Toyota Bangladesh ltd."
+  },
+  {
+    "name": "Toyota Corolla Hatchback",
+    "image": "https://www.toyota.com/imgix/content/dam/toyota/jellies/max/2022/corollahatchback/xse/6274/8w9/2.png?fm=png&bg=white&w=768&h=328&q=90",
+    "description": "Corolla Hatchback gives you the control you crave. With a traditional first gear and ten selectable ratios, Corolla Hatchbacks available paddle shifters let you take command and set your own pace.",
+    "price": 21165,
+    "quantity": 10,
+    "supplier": "Toyota Bangladesh ltd."
+  },
+  {
+    "name": "Toyota Tundra 2022",
+    "image": "https://www.toyota.com/imgix/content/dam/toyota/jellies/max/2022/tundra/limited/8252/040/2.png?fm=png&&w=768&h=328&q=90",
+    "description": "Tundras available i-FORCE MAX engine applies new hybrid tech for more performance. By pairing the 3.5L Twin-Turbo V6 with an electric motor, this all-new hybrid engine generates an electrifying 437 horsepower with an amazing 583 lb.-ft. of torque. And the unique placement of the electric motor between the engine and transmission allows power to be transferred efficiently, without any lag. Charging up the trail or merging onto the freeway—the second you feel the instantaneous torque across the powerband, youre ready to keep the adventure going.",
+    "price": 35950,
+    "quantity": 10,
+    "supplier": "Toyota Bangladesh ltd."
+  },
+  {
+    "name": "Nissan Pathfinder 2022",
+    "image": "https://www.nissanusa.com/content/dam/Nissan/us/vehicles/pathfinder/2022/promo/2022-pathfinder.jpg",
+    "description": "Challenging terrain? See how Pathfinder is up for it. The available Intelligent 4x4 with seven drive and terrain modes. A new 9-speed automatic transmission. An impressive approach angle, and innovation that can handle everything from squeezing between boulders to carrying all the gear you want to bring along. Youll stand out and stand tall.",
+    "price": 34640,
+    "quantity": 10,
+    "supplier": "Nissan Bangladesh ltd."
+  },
+  {
+    "name": "Mitsubishi Outlander 2022",
+    "image": "https://www.mitsubishicars.com/content/dam/mitsubishi-motors-us/images/cars/outlander-phev/2022/primary/exterior/22outlanderphev-01/X40_0_22OutlanderPHEV-01-Side.png?width=720&auto=webp&quality=70",
+    "description": "The 2022 Outlander PHEV combines hybrid power and performance with incredible fuel economy. Stretch your dollars and leave a smaller footprint with a range of up to 24 city miles on a full charge.",
+    "price": 36995,
+    "quantity": 10,
+    "supplier": "Mitsubishi Bangladesh ltd."
   }
 ]
