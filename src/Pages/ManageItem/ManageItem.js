@@ -5,11 +5,8 @@ import "./ManageInventory.module.css";
 
 const ManageItem = () => {
   const params = useParams();
-  // console.log(params.id);
   let [item, setItem] = useState({});
-  // const{_id, name,image, description, price,quantity,supplier}= item
   let [quantity, setQuantity] = useState(0);
-  // console.log(item);
   useEffect(() => {
     const getItem = async () => {
       const url = `http://localhost:5000/inventory/${params.id}`;
@@ -69,17 +66,29 @@ const ManageItem = () => {
     <div>
       <h2>Manage Item:{item.name}</h2>
       <h4>Quantity:{item.quantity}</h4>
-      <div></div>
+      <div className="w-50 mx-auto">
+        <h4>{item.name}</h4>
+        <img
+          loading="lazy"
+          style={{ width: "300px" }}
+          src={item.image}
+          alt=""
+        />
+        <p>{item.description}</p>
+        <h6>Price: ${item.price}</h6>
+        <h6>Quantity: {item.quantity}</h6>
+        <h6>Supplier:{item.supplier}</h6>
+      </div>
       <div className="loginBox">
         <form onSubmit={handleQuantityChange}>
           <input
             type="number"
             // onChange={handleQuantityChange}
-            placeholder="update quantity"
+            placeholder="update stock"
             name="quantity"
             id=""
           />
-          <input type="submit" value="Update quantity" />
+          <input type="submit" value="Update Stock" />
         </form>
         <button onClick={handleQuantity}>Delivered</button>
       </div>
