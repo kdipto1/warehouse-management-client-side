@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Items = () => {
   const [items, setItems] = useState([]);
   const[newItems, setNewItems] = useState([])
-  // console.log(items);
+  console.log(items);
   useEffect(() => {
     const getItems = async () => {
       const url = `http://localhost:5000/inventory`;

@@ -1,9 +1,23 @@
-.home-cards{
+.home-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10%;
+  gap: 4%;
 }
-.home-cards img{
+.home-cards img {
   aspect-ratio: 16/9;
-  
+}
+@media only screen and (max-width: 1020px) {
+  .home-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .home-cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 4%;
+  }
 }
