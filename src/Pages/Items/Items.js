@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Items = () => {
   const [items, setItems] = useState([]);
+  const[newItems, setNewItems] = useState([])
   // console.log(items);
   useEffect(() => {
     const getItems = async () => {
@@ -17,7 +18,7 @@ const Items = () => {
       }
     };
     getItems();
-  }, [items]);
+  }, [newItems]);
   const deleteItem = async (id) => {
     console.log(id);
     const url = `http://localhost:5000/inventory/${id}`;
@@ -26,8 +27,7 @@ const Items = () => {
         const { data } = response;
         if (data) {
           console.log(data);
-          // alert("quantity updated");
-          // setQuantity(quantity);
+          setNewItems(data)
           // setItems()
         }
       });

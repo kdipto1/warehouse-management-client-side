@@ -41,7 +41,7 @@ const Home = () => {
                <h6>Quantity: {item.quantity}</h6>
                <h6>Supplier:{item.supplier}</h6>
                <Link to={`/inventory/${item._id}`}>
-                 <button>Stock Update</button>
+                 <button>Details</button>
                </Link>
              </div>
            );
