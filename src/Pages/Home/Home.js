@@ -5,7 +5,7 @@ import "./Home.css"
 
 const Home = () => {
   const [items, setItems] = useState([]);
-  console.log(items);
+  // console.log(items);
   useEffect(() => {
     const getItems = async () => {
       const url = `http://localhost:5000/inventory?size=6`;
@@ -30,7 +30,12 @@ const Home = () => {
            return (
              <div key={item._id} className="home-card">
                <h4>{item.name}</h4>
-               <img style={{ width: "300px" }} src={item.image} alt="" />
+               <img
+                 loading="lazy"
+                 style={{ width: "300px" }}
+                 src={item.image}
+                 alt=""
+               />
                <p>{item.description.slice(0, 100)}...</p>
                <h6>Price: ${item.price}</h6>
                <h6>Quantity: {item.quantity}</h6>
