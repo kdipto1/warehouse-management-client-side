@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./ManageInventory.module.css";
+import "./ManageItem.css"
 
 const ManageItem = () => {
   const params = useParams();
@@ -21,7 +21,7 @@ const ManageItem = () => {
     getItem();
   }, [params.id, quantity]);
 
-  const handleQuantity = (event) => {
+  const handleDelivery = (event) => {
     event.preventDefault();
     let quantity = item.quantity - 1;
     console.log(quantity);
@@ -31,7 +31,6 @@ const ManageItem = () => {
     try {
       axios.put(url, { quantity: quantity }).then((response) => {
         const { data } = response;
-        console.log(data);
         if (data) {
           console.log(data);
           // alert("quantity updated");
@@ -42,23 +41,25 @@ const ManageItem = () => {
       console.log(error);
     }
   };
-  const handleQuantityChange = (event) => {
+  const handleRestock = (event) => {
     event.preventDefault();
     let quantity =
       parseInt(item.quantity) + parseInt(event.target.quantity.value);
     console.log(quantity);
     const url = `http://localhost:5000/inventory/${params.id}`;
-    try {
-      axios.put(url, { quantity: quantity }).then((response) => {
-        const { data } = response;
-        if (data) {
-          console.log(data);
-          setQuantity(quantity);
-          event.target.reset();
-        }
-      });
-    } catch (error) {
-      console.log(error);
+    if (parseInt(event.target.quantity.value) >= 0) {
+      try {
+        axios.put(url, { quantity: quantity }).then((response) => {
+          const { data } = response;
+          if (data) {
+            console.log(data);
+            setQuantity(quantity);
+            event.target.reset();
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -70,7 +71,7 @@ const ManageItem = () => {
         <h4>{item.name}</h4>
         <img
           loading="lazy"
-          style={{ width: "300px" }}
+          style={{ width: "300px"}}
           src={item.image}
           alt=""
         />
@@ -80,7 +81,7 @@ const ManageItem = () => {
         <h6>Supplier:{item.supplier}</h6>
       </div>
       <div className="loginBox">
-        <form onSubmit={handleQuantityChange}>
+        <form onSubmit={handleRestock}>
           <input
             type="number"
             // onChange={handleQuantityChange}
@@ -90,7 +91,7 @@ const ManageItem = () => {
           />
           <input type="submit" value="Update Stock" />
         </form>
-        <button onClick={handleQuantity}>Delivered</button>
+        <button onClick={handleDelivery}>Delivered</button>
       </div>
     </div>
   );
