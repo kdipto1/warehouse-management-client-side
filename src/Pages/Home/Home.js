@@ -2,9 +2,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet"
 
 const Home = () => {
+  const position = [23.79377280479345, 90.40535937216653];
+  const center = [23.79377280479345, 90.40535937216653];
   const [items, setItems] = useState([]);
+  const markerIcon = new L.Icon({
+    iconUrl: require("../Icons/pointer.png"),
+    iconSize: [50,100]
+  })
   // console.log(items);
   useEffect(() => {
     const getItems = async () => {
@@ -46,6 +55,23 @@ const Home = () => {
             </div>
           );
         })}
+      </div>
+      {/* mapppppppppppppppp */}
+      <div className="mt-5">
+        <MapContainer
+          center={center}
+          zoom={13}
+          scrollWheelZoom={true}
+          style={{ width: "50vw", height: "50vh" }}
+        >
+          <TileLayer
+            url="https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=LFYgaLPkja6NSkakY5kC"
+            attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+          />
+          <Marker icon={markerIcon} position={position}>
+            <Popup>Programming Hero, Dhaka</Popup>
+          </Marker>
+        </MapContainer>
       </div>
     </div>
   );

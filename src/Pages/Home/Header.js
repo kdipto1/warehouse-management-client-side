@@ -10,7 +10,6 @@ const Header = () => {
   if (loading) {
     return
   }
-  console.log(user);
   return (
     <div>
       <Navbar

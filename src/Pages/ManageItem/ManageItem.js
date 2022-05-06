@@ -20,9 +20,14 @@ const ManageItem = () => {
     };
     getItem();
   }, [params.id, quantity]);
+  
 
   const handleDelivery = (event) => {
+
     event.preventDefault();
+    if (item.quantity <= 0) {
+      return (item.quantity = "stock out");
+    }
     let quantity = parseInt(item.quantity) - 1;
     console.log(quantity);
     // setQuantity(newQuantity);
