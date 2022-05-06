@@ -13,7 +13,7 @@ const Items = () => {
   const [newItems, setNewItems] = useState([]);
   useEffect(() => {
     const getItems = async () => {
-      const url = `https://server-11-11.herokuapp.com/inventory`;
+      const url = `http://localhost:5000/inventory`;
       try {
         const { data } = await axios.get(url);
         setItems(data);
@@ -24,7 +24,7 @@ const Items = () => {
     getItems();
   }, [newItems, user, loading]);
   const deleteItem = async (id) => {
-    const url = `https://server-11-11.herokuapp.com/inventory/${id}`;
+    const url = `http://localhost:5000/inventory/${id}`;
     try {
       await axios.delete(url, { id }).then((response) => {
         const { data } = response;
@@ -41,7 +41,7 @@ const Items = () => {
   return (
     <div className="container">
       <h2>All item:{items?.length}</h2>
-      <Table striped bordered hover responsive>
+      <Table data-aos="zoom-in" striped bordered hover responsive>
         <thead>
           <tr>
             <th>Product Id</th>

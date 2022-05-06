@@ -8,7 +8,7 @@ const Home = () => {
   // console.log(items);
   useEffect(() => {
     const getItems = async () => {
-      const url = `https://server-11-11.herokuapp.com/inventory?size=6`;
+      const url = `http://localhost:5000/inventory?size=6`;
       try {
         const { data } = await axios.get(url);
         setItems(data);
@@ -28,7 +28,7 @@ const Home = () => {
       <div className="home-cards container">
         {items.map((item) => {
           return (
-            <div key={item._id} className="home-card">
+            <div data-aos="flip-up" key={item._id} className="home-card">
               <h4>{item.name}</h4>
               <img
                 loading="lazy"
