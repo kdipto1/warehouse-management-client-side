@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./ManageItem.css"
+import "./ManageItem.css";
 
 const ManageItem = () => {
   const params = useParams();
@@ -9,7 +9,7 @@ const ManageItem = () => {
   let [quantity, setQuantity] = useState(0);
   useEffect(() => {
     const getItem = async () => {
-      const url = `http://localhost:5000/inventory/${params.id}`;
+      const url = `https://server-11-11.herokuapp.com/inventory/${params.id}`;
       try {
         const { data } = await axios.get(url);
         setItem(data);
@@ -27,7 +27,7 @@ const ManageItem = () => {
     console.log(quantity);
     // setQuantity(newQuantity);
     // const { itemQuantity } = newQuantity;
-    const url = `http://localhost:5000/inventory/${params.id}`;
+    const url = `https://server-11-11.herokuapp.com/inventory/${params.id}`;
     try {
       axios.put(url, { quantity: quantity }).then((response) => {
         const { data } = response;
@@ -46,7 +46,7 @@ const ManageItem = () => {
     let quantity =
       parseInt(item.quantity) + parseInt(event.target.quantity.value);
     console.log(quantity);
-    const url = `http://localhost:5000/inventory/${params.id}`;
+    const url = `https://server-11-11.herokuapp.com/inventory/${params.id}`;
     if (parseInt(event.target.quantity.value) >= 0) {
       try {
         axios.put(url, { quantity: quantity }).then((response) => {
@@ -71,7 +71,7 @@ const ManageItem = () => {
         <h4>{item.name}</h4>
         <img
           loading="lazy"
-          style={{ width: "300px"}}
+          style={{ width: "300px" }}
           src={item.image}
           alt=""
         />
