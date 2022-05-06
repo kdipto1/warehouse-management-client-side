@@ -1,19 +1,19 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Table } from 'react-bootstrap';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, Navigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import auth from '../../firebase.init';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Table } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
 
-const Items = () => {
-  const [user, loading, error] = useAuthState(auth);
- 
+const MyItems = () => {
+  const [user] = useAuthState(auth);
   const [items, setItems] = useState([]);
   const [newItems, setNewItems] = useState([]);
   useEffect(() => {
-    const getItems = async () => {
-      const url = `http://localhost:5000/inventory`;
+    const getMyItems = async () => {
+      const email = user?.email;
+      // console.log(email);
+      const url = `http://localhost:5000/inventoryUser?email=${email}`;
       try {
         const { data } = await axios.get(url);
         setItems(data);
@@ -21,16 +21,17 @@ const Items = () => {
         console.log(error);
       }
     };
-    getItems();
-  }, [newItems,user,loading]);
+    getMyItems();
+  }, [user, newItems]);
   const deleteItem = async (id) => {
+    console.log(id);
     const url = `http://localhost:5000/inventory/${id}`;
     try {
       await axios.delete(url, { id }).then((response) => {
         const { data } = response;
         if (data) {
           console.log(data);
-          setNewItems(data)
+          setNewItems(data);
           // setItems()
         }
       });
@@ -40,7 +41,7 @@ const Items = () => {
   };
   return (
     <div className="container">
-      <h2>All item:{items?.length}</h2>
+      <h2>my items:{items?.length}</h2>
       <Table striped bordered hover responsive>
         <thead>
           <tr>
@@ -52,7 +53,7 @@ const Items = () => {
             <th>Manage Item</th>
           </tr>
         </thead>
-        {items?.map(item => {
+        {items?.map((item) => {
           return (
             <tbody key={item?._id}>
               <tr>
@@ -60,12 +61,20 @@ const Items = () => {
                 <td>{item?.name}</td>
                 <td>{item?.quantity}</td>
                 <td>{item?.supplier}</td>
-                <td> <img loading="lazy" style={{ width:"50px" ,aspectRatio: "16/9"}} src={item?.image} alt="" /> </td>
+                <td>
+                  {" "}
+                  <img
+                    loading="lazy"
+                    style={{ width: "50px", aspectRatio: "16/9" }}
+                    src={item?.image}
+                    alt=""
+                  />{" "}
+                </td>
                 <td>
                   <Link to={`/inventory/${item?._id}`}>
                     <button>Details</button>
-                  </Link> {" "}
-                  <button onClick={()=>deleteItem(item?._id)}>Delete</button>
+                  </Link>{" "}
+                  <button onClick={() => deleteItem(item?._id)}>Delete</button>
                 </td>
               </tr>
             </tbody>
@@ -76,4 +85,4 @@ const Items = () => {
   );
 };
 
-export default Items;
+export default MyItems;

@@ -1,7 +1,10 @@
 import axios from 'axios';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const AddItem = () => {
+  const [user, loading, error] = useAuthState(auth);
   const addNewItem = (event) => {
     event.preventDefault();
     const email = event?.target?.email?.value
@@ -37,7 +40,7 @@ const AddItem = () => {
     <div>
       <h2>Add New Item:</h2>
       <form onSubmit={addNewItem}>
-        <input type="email" name="email" id="" />
+        <input type="email" value={user?.email} disabled name="email" id="" />
         <br />
         <input type="text" name="name" id="" placeholder="product name" required/>
         <br />
