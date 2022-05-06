@@ -47,7 +47,7 @@ const Home = () => {
               />
               <p>{item.description.slice(0, 100)}...</p>
               <h6>Price: ${item.price}</h6>
-              <h6>Quantity: {item.quantity}</h6>
+              <h6>Quantity:  {item.quantity} </h6>
               <h6>Supplier:{item.supplier}</h6>
               <Link to={`/inventory/${item._id}`}>
                 <button>Details</button>
@@ -61,7 +61,7 @@ const Home = () => {
         <MapContainer
           center={center}
           zoom={13}
-          scrollWheelZoom={true}
+          scrollWheelZoom={false}
           style={{ width: "50vw", height: "50vh" }}
         >
           <TileLayer

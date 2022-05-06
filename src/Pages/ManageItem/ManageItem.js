@@ -26,7 +26,7 @@ const ManageItem = () => {
 
     event.preventDefault();
     if (item.quantity <= 0) {
-      return (item.quantity = "stock out");
+      return;
     }
     let quantity = parseInt(item.quantity) - 1;
     console.log(quantity);
@@ -82,7 +82,10 @@ const ManageItem = () => {
         />
         <p>{item.description}</p>
         <h6>Price: ${item.price}</h6>
-        <h6>Quantity: {item.quantity}</h6>
+        <h6>
+          Quantity:{" "}
+          {item.quantity > 0 ? item.quantity : "stock out"}
+        </h6>
         <h6>Supplier:{item.supplier}</h6>
       </div>
       <div className="loginBox">
