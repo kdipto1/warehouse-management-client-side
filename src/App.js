@@ -6,6 +6,7 @@ import Home from "./Pages/Home/Home";
 import Items from "./Pages/Items/Items";
 import Login from "./Pages/Login/Login";
 import ManageItem from "./Pages/ManageItem/ManageItem";
+import Register from "./Pages/Login/Register"
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
         <Route path="/inventory" element={<Items />}>Manage Items</Route>
         <Route path="/addItem" element={<AddItem></AddItem>}>Add Item</Route>
         <Route path="/login" element={<Login></Login>}>Login</Route>
+        <Route path="/register" element={<Register/>}>Login</Route>
+        
         
       </Routes>
     </div>
