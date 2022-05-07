@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./ManageItem.css";
 
 const ManageItem = () => {
@@ -37,6 +38,7 @@ const ManageItem = () => {
         if (data) {
           console.log(data);
           // alert("quantity updated");
+          toast("Product Delivered")
           setQuantity(quantity);
         }
       });
@@ -56,6 +58,7 @@ const ManageItem = () => {
           const { data } = response;
           if (data) {
             console.log(data);
+            toast("Stock updated")
             setQuantity(quantity);
             event.target.reset();
           }
@@ -68,11 +71,11 @@ const ManageItem = () => {
 
   return (
     <div>
-      <h2>Manage Item:{item.name}</h2>
-      <h4>Quantity:{item.quantity}</h4>
-      <div className="w-50 mx-auto">
-        <h4>{item.name}</h4>
+      <div className="w-75 mx-auto mt-2 p-2 text-center manage-card">
+        <h2 className="text-center ">Manage Item: {item.name}</h2>
+        {/* <h4>{item.name}</h4> */}
         <img
+          className="img-fluid mx-auto"
           loading="lazy"
           style={{ width: "300px" }}
           src={item.image}
@@ -82,19 +85,29 @@ const ManageItem = () => {
         <h6>Price: ${item.price}</h6>
         <h6>Quantity: {item.quantity > 0 ? item.quantity : "stock out"}</h6>
         <h6>Supplier:{item.supplier}</h6>
+        <button
+          className="d-block mx-auto manage-button"
+          onClick={handleDelivery}
+        >
+          Delivered
+        </button>
       </div>
-      <div className="loginBox">
+      <div className="text-center manage-stock w-75 w-lg-50 p-4 mx-auto mt-4">
+        <h4>Update Stock Quantity for {item.name}</h4>
         <form onSubmit={handleRestock}>
           <input
+            className=" w-50 d-block mx-auto"
             type="number"
-            // onChange={handleQuantityChange}
             placeholder="update stock"
             name="quantity"
-            id=""
           />
-          <input type="submit" value="Update Stock" />
+          <br />
+          <input
+            className="d-block mx-auto manage-button"
+            type="submit"
+            value="Update Stock"
+          />
         </form>
-        <button onClick={handleDelivery}>Delivered</button>
       </div>
     </div>
   );

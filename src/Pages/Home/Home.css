@@ -56,7 +56,7 @@
   }
 }
 
-@media only screen and (max-width: 1172px) {
+@media only screen and (max-width: 1175px) {
   .home-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

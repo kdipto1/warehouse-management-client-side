@@ -46,7 +46,7 @@ const Home = () => {
                 src={item.image}
                 alt=""
               />
-              <p>{item.description.slice(0, 100)}...</p>
+              <p>{item.description.slice(0, 90)}...</p>
               <h6>Price: ${item.price}</h6>
               <h6>
                 Quantity: {item.quantity > 0 ? item.quantity : "stock out"}{" "}
@@ -62,6 +62,7 @@ const Home = () => {
       {/* mapppppppppppppppp */}
       <div className="mt-5">
         <MapContainer
+          className="d-block mx-auto"
           center={center}
           zoom={13}
           scrollWheelZoom={false}
