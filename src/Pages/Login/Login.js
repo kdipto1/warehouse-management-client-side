@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import SocialLogin from "./SocialLogin";
+import "./Login.css"
 
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -33,7 +34,7 @@ const Login = () => {
     
   };
   return (
-    <div className="text-center">
+    <div className="text-center login-div mt-2">
       <h2>Login to your Account</h2>
       <form onSubmit={handleLogin}>
         <input type="email" name="email" required placeholder="Your Email" />
@@ -45,9 +46,10 @@ const Login = () => {
           placeholder="Your Password"
         />
         <br />
-        <input type="submit" value="Login" />
+        <input type="submit" value="Login" className="button-40"/>
       </form>
       <p>Don't have an account, Please <Link to="/register">Register</Link> </p>
+      <hr className="w-50 mx-auto"/>
       <SocialLogin></SocialLogin>
     </div>
   );

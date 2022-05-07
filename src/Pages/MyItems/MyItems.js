@@ -4,6 +4,7 @@ import { Table } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
+import "./MyItems.css"
 
 const MyItems = () => {
   const [user] = useAuthState(auth);
@@ -13,7 +14,7 @@ const MyItems = () => {
     const getMyItems = async () => {
       const email = user?.email;
       // console.log(email);
-      const url = `https://server-11-11.herokuapp.com/inventoryUser?email=${email}`;
+      const url = `http://localhost:5000/inventoryUser?email=${email}`;
       try {
         const { data } = await axios.get(url);
         setItems(data);
@@ -25,7 +26,7 @@ const MyItems = () => {
   }, [user, newItems]);
   const deleteItem = async (id) => {
     console.log(id);
-    const url = `https://server-11-11.herokuapp.com/inventory/${id}`;
+    const url = `http://localhost:5000/inventory/${id}`;
     try {
       await axios.delete(url, { id }).then((response) => {
         const { data } = response;
@@ -41,7 +42,10 @@ const MyItems = () => {
   };
   return (
     <div className="container">
-      <h2>my items:{items?.length}</h2>
+      <h2 className="text-center">Manage Inventory</h2>
+      <Link to="/addItem">
+        <button className="d-block mx-auto button-39 mb-2">Add New Item</button>{" "}
+      </Link>
       <Table data-aos="zoom-in" striped bordered hover responsive>
         <thead>
           <tr>
@@ -72,9 +76,9 @@ const MyItems = () => {
                 </td>
                 <td>
                   <Link to={`/inventory/${item?._id}`}>
-                    <button>Details</button>
+                    <button className="button-60">Details</button>
                   </Link>{" "}
-                  <button onClick={() => deleteItem(item?._id)}>Delete</button>
+                  <button className="button-60" onClick={() => deleteItem(item?._id)}>Delete</button>
                 </td>
               </tr>
             </tbody>

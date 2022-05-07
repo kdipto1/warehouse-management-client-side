@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./ManageItem.css";
 
@@ -8,9 +8,10 @@ const ManageItem = () => {
   const params = useParams();
   let [item, setItem] = useState({});
   let [quantity, setQuantity] = useState(0);
+  let [newQuantity, setNewQuantity] = useState()
   useEffect(() => {
     const getItem = async () => {
-      const url = `https://server-11-11.herokuapp.com/inventory/${params.id}`;
+      const url = `http://localhost:5000/inventory/${params.id}`;
       try {
         const { data } = await axios.get(url);
         setItem(data);
@@ -20,7 +21,7 @@ const ManageItem = () => {
       }
     };
     getItem();
-  }, [params.id, quantity]);
+  }, [params.id, quantity, newQuantity]);
 
   const handleDelivery = (event) => {
     event.preventDefault();
@@ -32,7 +33,7 @@ const ManageItem = () => {
     console.log(quantity);
     // setQuantity(newQuantity);
     // const { itemQuantity } = newQuantity;
-    const url = `https://server-11-11.herokuapp.com/inventory/${params.id}`;
+    const url = `http://localhost:5000/inventory/${params.id}`;
     try {
       axios.put(url, { quantity: quantity }).then((response) => {
         const { data } = response;
@@ -40,7 +41,7 @@ const ManageItem = () => {
           console.log(data);
           // alert("quantity updated");
           toast("Product Delivered");
-          setQuantity(quantity);
+          setNewQuantity(data);
         }
       });
     } catch (error) {
@@ -49,10 +50,13 @@ const ManageItem = () => {
   };
   const handleRestock = (event) => {
     event.preventDefault();
+    if (!event.target.quantity.value) {
+      toast("Please put the quantity")
+    }
     let quantity =
       parseInt(item.quantity) + parseInt(event.target.quantity.value);
     console.log(quantity);
-    const url = `https://server-11-11.herokuapp.com/inventory/${params.id}`;
+    const url = `http://localhost:5000/inventory/${params.id}`;
     if (parseInt(event.target.quantity.value) >= 0) {
       try {
         axios.put(url, { quantity: quantity }).then((response) => {
@@ -77,7 +81,7 @@ const ManageItem = () => {
         className="w-75 mx-auto mt-2 p-2 text-center manage-card"
       >
         <h2 className="text-center ">Manage Item: {item.name}</h2>
-        {/* <h4>{item.name}</h4> */}
+        <h4>Product Id: {item._id}</h4>
         <img
           className="img-fluid mx-auto"
           loading="lazy"
@@ -116,6 +120,11 @@ const ManageItem = () => {
           />
         </form>
       </div>
+      <Link to="/inventory">
+        <button className="d-block mx-auto mt-2 home-button">
+          Manage Inventories
+        </button>
+      </Link>
     </div>
   );
 };

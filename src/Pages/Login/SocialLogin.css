@@ -1,19 +1,4 @@
-.home-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-}
-.home-cards img {
-  aspect-ratio: 16/9;
-  border-radius: 5px;
-}
-.home-card{
-  border: 0.5px solid gray;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-.home-button {
+.button-40 {
   background-color: #111827;
   border: 1px solid transparent;
   border-radius: .75rem;
@@ -38,47 +23,18 @@
   width: auto;
 }
 
-.home-button:hover {
+.button-40:hover {
   background-color: #374151;
 }
 
-.home-button:focus {
+.button-40:focus {
   box-shadow: none;
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
 
 @media (min-width: 768px) {
-  .home-button {
+  .button-40 {
     padding: .75rem 1.5rem;
   }
-}
-
-
-.map-container{
-  position: relative;
-}
-.leaflet-container {
-    height: 400px;
-    width: 400px;
-    position: absolute;
-}
-
-
-/* Responsive --------------------------------- */
-@media only screen and (max-width: 1175px) {
-  .home-cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: none;
-  }
-}
-
-@media only screen and (max-width: 770px) {
-  .home-cards {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 4%;
-  }
-  
 }

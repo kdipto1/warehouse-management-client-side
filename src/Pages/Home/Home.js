@@ -18,7 +18,7 @@ const Home = () => {
   // console.log(items);
   useEffect(() => {
     const getItems = async () => {
-      const url = `https://server-11-11.herokuapp.com/inventory?size=6`;
+      const url = `http://localhost:5000/inventory?size=6`;
       try {
         const { data } = await axios.get(url);
         setItems(data);
@@ -34,7 +34,8 @@ const Home = () => {
         <img className="img-fluid" src={banner} alt="" />
       </div>
       {/* Inventory item section home page --------------------------*/}
-      <div className="home-cards container mb-5">
+      <h2 className="text-center mt-5">Items:</h2>
+      <div className="home-cards container mb-2">
         {items.map((item) => {
           return (
             <div data-aos="flip-up" key={item._id} className="home-card">
@@ -59,23 +60,36 @@ const Home = () => {
           );
         })}
       </div>
+      <Link to="/inventory">
+        <button className="d-block mx-auto home-button">
+          Manage Inventories
+        </button>
+      </Link>
+
       {/* map ------------------------------------------ */}
-      <div className="mt-5">
-        <MapContainer
-          className="d-block mx-auto map-container"
-          center={center}
-          zoom={13}
-          scrollWheelZoom={false}
-          style={{ width: "350px", height: "350px" }}
-        >
-          <TileLayer
-            url="https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=LFYgaLPkja6NSkakY5kC"
-            attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
-          />
-          <Marker icon={markerIcon} position={position}>
-            <Popup>Programming Hero, Dhaka</Popup>
-          </Marker>
-        </MapContainer>
+      <div>
+        <h2>Our services:</h2>
+      </div>
+      <div className="maps-container ">
+        <div style={{ height: "300px",width:"300px" }} className="mt-5">
+          <h2>Our location:</h2>
+          <MapContainer
+            className="mx-auto map-container"
+            center={center}
+            zoom={13}
+            scrollWheelZoom={false}
+            style={{ height: "100%", minHeight: "100%" }}
+            // style={{ width: "350px", height: "350px" }}
+          >
+            <TileLayer
+              url="https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=LFYgaLPkja6NSkakY5kC"
+              attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+            />
+            <Marker icon={markerIcon} position={position}>
+              <Popup>Programming Hero, Dhaka</Popup>
+            </Marker>
+          </MapContainer>
+        </div>
       </div>
     </div>
   );
