@@ -54,7 +54,7 @@ const Home = () => {
               </h6>
               <h6>Supplier:{item.supplier}</h6>
               <Link to={`/inventory/${item._id}`}>
-                <button className="home-button text-center">Details</button>
+                <button className="home-button text-center">Manage</button>
               </Link>
             </div>
           );
@@ -71,15 +71,15 @@ const Home = () => {
         <h2>Our services:</h2>
       </div>
       <div className="maps-container ">
-        <div style={{ height: "300px",width:"300px" }} className="mt-5">
+        <div className="mt-5 d-flex flex-column">
           <h2>Our location:</h2>
           <MapContainer
             className="mx-auto map-container"
             center={center}
             zoom={13}
             scrollWheelZoom={false}
-            style={{ height: "100%", minHeight: "100%" }}
-            // style={{ width: "350px", height: "350px" }}
+            // style={{ height: "100%", minHeight: "100%" }}
+            style={{ width: "350px", height: "350px" }}
           >
             <TileLayer
               url="https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=LFYgaLPkja6NSkakY5kC"
