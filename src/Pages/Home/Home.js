@@ -38,8 +38,9 @@ const Home = () => {
         {items.map((item) => {
           return (
             <div data-aos="flip-up" key={item._id} className="home-card">
-              <h4>{item.name}</h4>
+              <h4 className="text-center">{item.name}</h4>
               <img
+                className="d-block mx-auto"
                 loading="lazy"
                 style={{ width: "300px" }}
                 src={item.image}
@@ -47,10 +48,12 @@ const Home = () => {
               />
               <p>{item.description.slice(0, 100)}...</p>
               <h6>Price: ${item.price}</h6>
-              <h6>Quantity: {item.quantity} </h6>
+              <h6>
+                Quantity: {item.quantity > 0 ? item.quantity : "stock out"}{" "}
+              </h6>
               <h6>Supplier:{item.supplier}</h6>
               <Link to={`/inventory/${item._id}`}>
-                <button>Details</button>
+                <button className="home-button text-center">Details</button>
               </Link>
             </div>
           );

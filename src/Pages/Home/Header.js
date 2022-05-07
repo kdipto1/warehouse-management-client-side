@@ -34,22 +34,24 @@ const Header = () => {
               </Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link as={Link} to="/login">
-                Login
-              </Nav.Link>
-              <NavDropdown title={user?.email} id="collasible-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/myItems">My Items</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item onClick={() => signOut(auth)}>
-                  Logout
-                </NavDropdown.Item>
-              </NavDropdown>
+              {user ? (
+                <NavDropdown className="me-5" title={user?.email} id="collasible-nav-dropdown">
+                  <NavDropdown.Item as={Link} to="/myItems">
+                    My Items
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">
+                    Another action
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item onClick={() => signOut(auth)}>
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              ) : (
+                <Nav.Link as={Link} to="/login">
+                  Login
+                </Nav.Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
