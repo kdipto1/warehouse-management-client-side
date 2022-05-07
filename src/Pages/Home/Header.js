@@ -37,9 +37,6 @@ const Header = () => {
               <Nav.Link as={Link} to="/login">
                 Login
               </Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
-                Dank memes
-              </Nav.Link>
               <NavDropdown title={user?.email} id="collasible-nav-dropdown">
                 <NavDropdown.Item as={Link} to="/myItems">My Items</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">

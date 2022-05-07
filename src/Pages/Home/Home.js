@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import L from "leaflet"
+import L from "leaflet";
 
 const Home = () => {
   const position = [23.79377280479345, 90.40535937216653];
@@ -12,8 +12,8 @@ const Home = () => {
   const [items, setItems] = useState([]);
   const markerIcon = new L.Icon({
     iconUrl: require("../Icons/pointer.png"),
-    iconSize: [50,100]
-  })
+    iconSize: [100, 200],
+  });
   // console.log(items);
   useEffect(() => {
     const getItems = async () => {
@@ -47,7 +47,7 @@ const Home = () => {
               />
               <p>{item.description.slice(0, 100)}...</p>
               <h6>Price: ${item.price}</h6>
-              <h6>Quantity:  {item.quantity} </h6>
+              <h6>Quantity: {item.quantity} </h6>
               <h6>Supplier:{item.supplier}</h6>
               <Link to={`/inventory/${item._id}`}>
                 <button>Details</button>
@@ -62,7 +62,7 @@ const Home = () => {
           center={center}
           zoom={13}
           scrollWheelZoom={false}
-          style={{ width: "50vw", height: "50vh" }}
+          style={{ width: "350px", height: "350px" }}
         >
           <TileLayer
             url="https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=LFYgaLPkja6NSkakY5kC"

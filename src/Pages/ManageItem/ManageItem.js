@@ -20,10 +20,8 @@ const ManageItem = () => {
     };
     getItem();
   }, [params.id, quantity]);
-  
 
   const handleDelivery = (event) => {
-
     event.preventDefault();
     if (item.quantity <= 0) {
       return;
@@ -82,10 +80,7 @@ const ManageItem = () => {
         />
         <p>{item.description}</p>
         <h6>Price: ${item.price}</h6>
-        <h6>
-          Quantity:{" "}
-          {item.quantity > 0 ? item.quantity : "stock out"}
-        </h6>
+        <h6>Quantity: {item.quantity > 0 ? item.quantity : "stock out"}</h6>
         <h6>Supplier:{item.supplier}</h6>
       </div>
       <div className="loginBox">
