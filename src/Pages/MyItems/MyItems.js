@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
-import "./MyItems.css"
+import "./MyItems.css";
 
 const MyItems = () => {
   const [user] = useAuthState(auth);
@@ -14,24 +15,27 @@ const MyItems = () => {
     const getMyItems = async () => {
       const email = user?.email;
       // console.log(email);
-      const url = `http://localhost:5000/inventoryUser?email=${email}`;
+      const url = `https://server-11-11.herokuapp.com/inventoryUser?email=${email}`;
       try {
         const { data } = await axios.get(url, {
           headers: {
-            Authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,
+            Authorization: `${user?.email} ${localStorage.getItem(
+              "accessToken"
+            )}`,
           },
         });
         console.log(data);
         setItems(data);
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data.message);
+        toast(error.response.data.message);
       }
     };
     getMyItems();
   }, [user, newItems]);
   const deleteItem = async (id) => {
     console.log(id);
-    const url = `http://localhost:5000/inventory/${id}`;
+    const url = `https://server-11-11.herokuapp.com/inventory/${id}`;
     try {
       await axios.delete(url, { id }).then((response) => {
         const { data } = response;
@@ -83,7 +87,12 @@ const MyItems = () => {
                   <Link to={`/inventory/${item?._id}`}>
                     <button className="button-60">Details</button>
                   </Link>{" "}
-                  <button className="button-60" onClick={() => deleteItem(item?._id)}>Delete</button>
+                  <button
+                    className="button-60"
+                    onClick={() => deleteItem(item?._id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             </tbody>

@@ -24,15 +24,15 @@ const Login = () => {
     if (loading) {
       return;
     }
-    if (user||user1) {
+    if (user || user1) {
       toast("Login Successful");
       console.log(user1);
-      const url = "http://localhost:5000/login";
+      const url = "https://server-11-11.herokuapp.com/login";
       axios
         .post(url, { email: user1?.email })
         .then((response) => {
           const { data } = response;
-          localStorage.setItem("accessToken", data.token)
+          localStorage.setItem("accessToken", data.token);
           console.log(data);
           navigate(from, { replace: true });
         })
@@ -40,7 +40,7 @@ const Login = () => {
           console.log(error);
         });
     }
-  }, [error, from, loading, navigate, user,user1]);
+  }, [error, from, loading, navigate, user, user1]);
 
   const handleLogin = (event) => {
     event.preventDefault();

@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
-import "./Item.css"
+import "./Item.css";
 
 const Items = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -14,7 +14,7 @@ const Items = () => {
   const [newItems, setNewItems] = useState([]);
   useEffect(() => {
     const getItems = async () => {
-      const url = `http://localhost:5000/inventory`;
+      const url = `https://server-11-11.herokuapp.com/inventory`;
       try {
         const { data } = await axios.get(url);
         setItems(data);
@@ -25,12 +25,12 @@ const Items = () => {
     getItems();
   }, [newItems, user, loading]);
   const deleteItem = async (id) => {
-    const url = `http://localhost:5000/inventory/${id}`;
+    const url = `https://server-11-11.herokuapp.com/inventory/${id}`;
     try {
       await axios.delete(url, { id }).then((response) => {
         const { data } = response;
         if (data) {
-          toast("Item Deleted")
+          toast("Item Deleted");
           setNewItems(data);
           // setItems()
         }
@@ -43,9 +43,7 @@ const Items = () => {
     <div className="container">
       <h2 className="text-center">Manage Inventory</h2>
       <Link to="/addItem">
-        <button className="d-block mx-auto button-39 mb-2">
-          Add New Item
-        </button>{" "}
+        <button className="d-block mx-auto button-39 mb-2">Add New Item</button>{" "}
       </Link>
       <Table data-aos="zoom-in" striped bordered hover responsive>
         <thead>
@@ -79,7 +77,12 @@ const Items = () => {
                   <Link to={`/inventory/${item?._id}`}>
                     <button className="button-60">Details</button>
                   </Link>{" "}
-                  <button className="button-60" onClick={() => deleteItem(item?._id)}>Delete</button>
+                  <button
+                    className="button-60"
+                    onClick={() => deleteItem(item?._id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             </tbody>

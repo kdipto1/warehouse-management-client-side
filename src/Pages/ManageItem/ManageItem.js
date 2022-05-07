@@ -8,10 +8,10 @@ const ManageItem = () => {
   const params = useParams();
   let [item, setItem] = useState({});
   let [quantity, setQuantity] = useState(0);
-  let [newQuantity, setNewQuantity] = useState()
+  let [newQuantity, setNewQuantity] = useState();
   useEffect(() => {
     const getItem = async () => {
-      const url = `http://localhost:5000/inventory/${params.id}`;
+      const url = `https://server-11-11.herokuapp.com/inventory/${params.id}`;
       try {
         const { data } = await axios.get(url);
         setItem(data);
@@ -33,7 +33,7 @@ const ManageItem = () => {
     console.log(quantity);
     // setQuantity(newQuantity);
     // const { itemQuantity } = newQuantity;
-    const url = `http://localhost:5000/inventory/${params.id}`;
+    const url = `https://server-11-11.herokuapp.com/inventory/${params.id}`;
     try {
       axios.put(url, { quantity: quantity }).then((response) => {
         const { data } = response;
@@ -51,12 +51,12 @@ const ManageItem = () => {
   const handleRestock = (event) => {
     event.preventDefault();
     if (!event.target.quantity.value) {
-      toast("Please put the quantity")
+      toast("Please put the quantity");
     }
     let quantity =
       parseInt(item.quantity) + parseInt(event.target.quantity.value);
     console.log(quantity);
-    const url = `http://localhost:5000/inventory/${params.id}`;
+    const url = `https://server-11-11.herokuapp.com/inventory/${params.id}`;
     if (parseInt(event.target.quantity.value) >= 0) {
       try {
         axios.put(url, { quantity: quantity }).then((response) => {

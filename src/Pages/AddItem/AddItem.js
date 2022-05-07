@@ -25,7 +25,7 @@ const AddItem = () => {
       image: image,
     };
     console.log(item);
-    const url = `http://localhost:5000/inventory/`;
+    const url = `https://server-11-11.herokuapp.com/inventory/`;
     axios
       .post(url, {
         email: email,
