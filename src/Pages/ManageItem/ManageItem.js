@@ -25,6 +25,7 @@ const ManageItem = () => {
   const handleDelivery = (event) => {
     event.preventDefault();
     if (item.quantity <= 0) {
+      toast("Product not available. Please Restock!")
       return;
     }
     let quantity = parseInt(item.quantity) - 1;
@@ -71,7 +72,10 @@ const ManageItem = () => {
 
   return (
     <div>
-      <div className="w-75 mx-auto mt-2 p-2 text-center manage-card">
+      <div
+        data-aos="fade-right"
+        className="w-75 mx-auto mt-2 p-2 text-center manage-card"
+      >
         <h2 className="text-center ">Manage Item: {item.name}</h2>
         {/* <h4>{item.name}</h4> */}
         <img
@@ -92,7 +96,10 @@ const ManageItem = () => {
           Delivered
         </button>
       </div>
-      <div className="text-center manage-stock w-75 w-lg-50 p-4 mx-auto mt-4">
+      <div
+        data-aos="fade-left"
+        className="text-center manage-stock w-75 w-lg-50 p-4 mx-auto mt-4"
+      >
         <h4>Update Stock Quantity for {item.name}</h4>
         <form onSubmit={handleRestock}>
           <input

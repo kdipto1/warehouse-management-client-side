@@ -42,7 +42,7 @@ const MyItems = () => {
   return (
     <div className="container">
       <h2>my items:{items?.length}</h2>
-      <Table striped bordered hover responsive>
+      <Table data-aos="zoom-in" striped bordered hover responsive>
         <thead>
           <tr>
             <th>Product Id</th>

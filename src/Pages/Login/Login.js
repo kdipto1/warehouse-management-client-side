@@ -19,7 +19,7 @@ const Login = () => {
       return;
     }
     if (user) {
-      console.log(user);
+      toast("Login Successful")
       navigate(from, { replace: true });
     }
   }, [error,from, loading,navigate,user]);
@@ -33,16 +33,18 @@ const Login = () => {
     
   };
   return (
-    <div>
+    <div className="text-center">
       <h2>Login to your Account</h2>
       <form onSubmit={handleLogin}>
         <input type="email" name="email" required placeholder="Your Email" />
+        <br />
         <input
           type="password"
           name="password"
           required
           placeholder="Your Password"
         />
+        <br />
         <input type="submit" value="Login" />
       </form>
       <p>Don't have an account, Please <Link to="/register">Register</Link> </p>

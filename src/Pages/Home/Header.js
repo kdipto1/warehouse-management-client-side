@@ -3,6 +3,7 @@ import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 
 const Header = () => {
@@ -43,7 +44,7 @@ const Header = () => {
                     Another action
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={() => signOut(auth)}>
+                  <NavDropdown.Item onClick={() => signOut(auth,toast("Logout Successful"))}>
                     Logout
                   </NavDropdown.Item>
                 </NavDropdown>

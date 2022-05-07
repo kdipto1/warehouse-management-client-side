@@ -33,8 +33,8 @@ const Home = () => {
       <div>
         <h2>Banner</h2>
       </div>
-      {/* Inventory item section home page */}
-      <div className="home-cards container">
+      {/* Inventory item section home page --------------------------*/}
+      <div className="home-cards container mb-5">
         {items.map((item) => {
           return (
             <div data-aos="flip-up" key={item._id} className="home-card">
@@ -59,10 +59,10 @@ const Home = () => {
           );
         })}
       </div>
-      {/* mapppppppppppppppp */}
+      {/* map ------------------------------------------ */}
       <div className="mt-5">
         <MapContainer
-          className="d-block mx-auto"
+          className="d-block mx-auto map-container"
           center={center}
           zoom={13}
           scrollWheelZoom={false}
