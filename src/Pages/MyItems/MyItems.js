@@ -16,7 +16,12 @@ const MyItems = () => {
       // console.log(email);
       const url = `http://localhost:5000/inventoryUser?email=${email}`;
       try {
-        const { data } = await axios.get(url);
+        const { data } = await axios.get(url, {
+          headers: {
+            Authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,
+          },
+        });
+        console.log(data);
         setItems(data);
       } catch (error) {
         console.log(error);

@@ -55,14 +55,25 @@
 }
 
 
-.map-container{
+.maps-container{
   position: relative;
+	background: #000;
+	z-index: 1;
+	margin-top: 30px;
 }
-.leaflet-container {
+.map-container{
+  display: block;
+  position: absolute;
+	top: 0; left: 0;
+	background: yellow;
+}
+/* .leaflet-container {
+  position: absolute;
+  z-index: -1;
     height: 400px;
     width: 400px;
     position: absolute;
-}
+} */
 
 
 /* Responsive --------------------------------- */

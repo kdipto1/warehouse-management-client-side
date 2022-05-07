@@ -71,15 +71,15 @@ const Home = () => {
         <h2>Our services:</h2>
       </div>
       <div className="maps-container ">
-        <div className="mt-5 d-flex flex-column">
+        <div className="mt-5 d-flex map-container flex-column">
           <h2>Our location:</h2>
           <MapContainer
-            className="mx-auto map-container"
+            className="mx-auto"
             center={center}
             zoom={13}
             scrollWheelZoom={false}
             // style={{ height: "100%", minHeight: "100%" }}
-            style={{ width: "350px", height: "350px" }}
+            style={{ width: "100%", height: "350px" }}
           >
             <TileLayer
               url="https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=LFYgaLPkja6NSkakY5kC"
