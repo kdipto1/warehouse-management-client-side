@@ -5,6 +5,7 @@ import "./Home.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import banner from "../Images/banner.png";
 
 const Home = () => {
   const position = [23.79377280479345, 90.40535937216653];
@@ -17,7 +18,7 @@ const Home = () => {
   // console.log(items);
   useEffect(() => {
     const getItems = async () => {
-      const url = `http://localhost:5000/inventory?size=6`;
+      const url = `https://server-11-11.herokuapp.com/inventory?size=6`;
       try {
         const { data } = await axios.get(url);
         setItems(data);
@@ -29,9 +30,8 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <h2>home</h2>
       <div>
-        <h2>Banner</h2>
+        <img className="img-fluid" src={banner} alt="" />
       </div>
       {/* Inventory item section home page --------------------------*/}
       <div className="home-cards container mb-5">

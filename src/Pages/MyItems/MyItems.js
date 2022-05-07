@@ -13,7 +13,7 @@ const MyItems = () => {
     const getMyItems = async () => {
       const email = user?.email;
       // console.log(email);
-      const url = `http://localhost:5000/inventoryUser?email=${email}`;
+      const url = `https://server-11-11.herokuapp.com/inventoryUser?email=${email}`;
       try {
         const { data } = await axios.get(url);
         setItems(data);
@@ -25,7 +25,7 @@ const MyItems = () => {
   }, [user, newItems]);
   const deleteItem = async (id) => {
     console.log(id);
-    const url = `http://localhost:5000/inventory/${id}`;
+    const url = `https://server-11-11.herokuapp.com/inventory/${id}`;
     try {
       await axios.delete(url, { id }).then((response) => {
         const { data } = response;

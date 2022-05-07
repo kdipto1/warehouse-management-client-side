@@ -10,7 +10,7 @@ const ManageItem = () => {
   let [quantity, setQuantity] = useState(0);
   useEffect(() => {
     const getItem = async () => {
-      const url = `http://localhost:5000/inventory/${params.id}`;
+      const url = `https://server-11-11.herokuapp.com/inventory/${params.id}`;
       try {
         const { data } = await axios.get(url);
         setItem(data);
@@ -25,21 +25,21 @@ const ManageItem = () => {
   const handleDelivery = (event) => {
     event.preventDefault();
     if (item.quantity <= 0) {
-      toast("Product not available. Please Restock!")
+      toast("Product not available. Please Restock!");
       return;
     }
     let quantity = parseInt(item.quantity) - 1;
     console.log(quantity);
     // setQuantity(newQuantity);
     // const { itemQuantity } = newQuantity;
-    const url = `http://localhost:5000/inventory/${params.id}`;
+    const url = `https://server-11-11.herokuapp.com/inventory/${params.id}`;
     try {
       axios.put(url, { quantity: quantity }).then((response) => {
         const { data } = response;
         if (data) {
           console.log(data);
           // alert("quantity updated");
-          toast("Product Delivered")
+          toast("Product Delivered");
           setQuantity(quantity);
         }
       });
@@ -52,14 +52,14 @@ const ManageItem = () => {
     let quantity =
       parseInt(item.quantity) + parseInt(event.target.quantity.value);
     console.log(quantity);
-    const url = `http://localhost:5000/inventory/${params.id}`;
+    const url = `https://server-11-11.herokuapp.com/inventory/${params.id}`;
     if (parseInt(event.target.quantity.value) >= 0) {
       try {
         axios.put(url, { quantity: quantity }).then((response) => {
           const { data } = response;
           if (data) {
             console.log(data);
-            toast("Stock updated")
+            toast("Stock updated");
             setQuantity(quantity);
             event.target.reset();
           }
