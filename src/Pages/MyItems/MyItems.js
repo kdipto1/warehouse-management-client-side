@@ -12,7 +12,7 @@ const MyItems = () => {
   const [user, loading, error] = useAuthState(auth);
   const [items, setItems] = useState([]);
   const [newItems, setNewItems] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     if (loading) {
       return;
@@ -20,7 +20,7 @@ const MyItems = () => {
     const getMyItems = async () => {
       const email = user?.email;
       // console.log(email);
-      const url = `http://localhost:5000/inventoryUser?email=${email}`;
+      const url = `https://server-11-11.herokuapp.com/inventoryUser?email=${email}`;
       try {
         const { data } = await axios.get(url, {
           headers: {
@@ -35,20 +35,19 @@ const MyItems = () => {
         console.log(error);
         if (error.response.status === 403) {
           toast(error.response.data.message);
-          signOut(auth)
-          navigate("/login")
+          signOut(auth);
+          navigate("/login");
         }
       }
     };
     getMyItems();
-  }, [user, newItems, navigate,loading]);
+  }, [user, newItems, navigate, loading]);
   const deleteItem = async (id) => {
-    const procced = window.confirm("Delete")
+    const procced = window.confirm("Delete");
     if (!procced) {
       return;
-    }
-    else {
-      const url = `http://localhost:5000/inventory/${id}`;
+    } else {
+      const url = `https://server-11-11.herokuapp.com/inventory/${id}`;
       console.log(id);
       try {
         await axios.delete(url, { id }).then((response) => {
@@ -63,7 +62,6 @@ const MyItems = () => {
         console.log(error);
       }
     }
-    
   };
   return (
     <div className="container">

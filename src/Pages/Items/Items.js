@@ -14,7 +14,7 @@ const Items = () => {
   const [newItems, setNewItems] = useState([]);
   useEffect(() => {
     const getItems = async () => {
-      const url = `http://localhost:5000/inventory`;
+      const url = `https://server-11-11.herokuapp.com/inventory`;
       try {
         const { data } = await axios.get(url);
         setItems(data);
@@ -29,7 +29,7 @@ const Items = () => {
     if (!verify) {
       return;
     } else {
-      const url = `http://localhost:5000/inventory/${id}`;
+      const url = `https://server-11-11.herokuapp.com/inventory/${id}`;
       try {
         await axios.delete(url, { id }).then((response) => {
           const { data } = response;

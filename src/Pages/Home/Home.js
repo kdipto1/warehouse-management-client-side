@@ -13,7 +13,7 @@ const Home = () => {
   // console.log(items);
   useEffect(() => {
     const getItems = async () => {
-      const url = `http://localhost:5000/inventory?size=6`;
+      const url = `https://server-11-11.herokuapp.com/inventory?size=6`;
       try {
         const { data } = await axios.get(url);
         setItems(data);
@@ -61,12 +61,13 @@ const Home = () => {
         </button>
       </Link>
 
-      {/* map ------------------------------------------ */}
       <div>
         <h2>Our services:</h2>
       </div>
-      {/* <HomeMap></HomeMap> */}
-      
+      {/* map ------------------------------------------ */}
+      {/* <div className="map">
+      <HomeMap></HomeMap>
+      </div> */}
     </div>
   );
 };

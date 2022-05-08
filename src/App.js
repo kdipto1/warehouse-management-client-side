@@ -13,6 +13,7 @@ import RequireAuth from "./Pages/RequireAuth/RequireAuth";
 import MyItems from "./Pages/MyItems/MyItems";
 import Footer from "./Pages/Footer/Footer";
 import NotFound from "./Pages/NotFound/NotFound";
+import Blogs from "./Pages/Blogs/Blogs";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         >
           Add Item
         </Route>
+        <Route path="/blogs" element={<Blogs/>}></Route>
         <Route path="/login" element={<Login></Login>}>
           Login
         </Route>

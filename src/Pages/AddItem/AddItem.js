@@ -25,7 +25,7 @@ const AddItem = () => {
       image: image,
     };
     console.log(item);
-    const url = `http://localhost:5000/inventory/`;
+    const url = `https://server-11-11.herokuapp.com/inventory/`;
     axios
       .post(url, {
         email: email,
@@ -60,7 +60,7 @@ const AddItem = () => {
           name="email"
           id=""
         />
-        
+
         <input
           className="form-control w-50  mb-1"
           type="text"
@@ -69,7 +69,7 @@ const AddItem = () => {
           placeholder="product name"
           required
         />
-        
+
         <input
           className="form-control w-50 mb-1"
           type="text"
@@ -78,7 +78,7 @@ const AddItem = () => {
           placeholder="product supplier"
           required
         />
-        
+
         <input
           className="form-control w-50 mb-1"
           type="text"
@@ -86,7 +86,7 @@ const AddItem = () => {
           id=""
           placeholder="image link"
         />
-        
+
         <input
           className="form-control w-50 mb-1"
           type="number"
@@ -95,7 +95,7 @@ const AddItem = () => {
           placeholder="price of products"
           required
         />
-        
+
         <input
           className="form-control w-50 mb-1"
           type="number"
@@ -104,7 +104,7 @@ const AddItem = () => {
           placeholder="product quantity"
           required
         />
-        
+
         <textarea
           name="description"
           id=""
