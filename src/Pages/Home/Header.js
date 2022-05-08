@@ -47,8 +47,8 @@ const Header = () => {
                   <NavDropdown.Item as={Link} to="/myItems">
                     My Items
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
+                  <NavDropdown.Item as={Link} to="/addItem" >
+                    Add Item
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item

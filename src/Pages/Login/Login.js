@@ -10,8 +10,8 @@ import auth from "../../firebase.init";
 import SocialLogin from "./SocialLogin";
 import "./Login.css";
 import axios from "axios";
-import Skeleton from "react-loading-skeleton";
 import { useSendEmailVerification } from "react-firebase-hooks/auth";
+import Loading from "../Utility/Loading";
 
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -26,11 +26,11 @@ const Login = () => {
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
   useEffect(() => {
-    if (error || resetError) {
-      toast(error?.message);
+    if (error || resetError)  {
+      toast(error.message);
     }
-    if (loading) {
-      <Skeleton count={6}/>
+    if (loading || loading1) {
+      <Loading />
       return;
     }
     if (user || user1) {
@@ -49,7 +49,7 @@ const Login = () => {
           console.log(error);
         });
     }
-  }, [error, from, loading, navigate, user, user1,resetError]);
+  }, [error, from, loading, navigate, user, user1,resetError, loading1]);
 
   const handleLogin = (event) => {
     event.preventDefault();

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 import "leaflet/dist/leaflet.css";
 import banner from "../Images/banner.png";
-import HomeMap from "./HomeMap";
+import CountUp from "react-countup";
 import Skeleton from "react-loading-skeleton";
 
 const Home = () => {
@@ -24,7 +24,6 @@ const Home = () => {
   }, []);
   return (
     <div className="home">
-      
       <div>
         <img className="img-fluid" src={banner} alt="" />
       </div>
@@ -32,7 +31,7 @@ const Home = () => {
       <h2 className="text-center mt-5">Items:</h2>
       <div className="home-cards container mb-2">
         {items.map((item) => {
-          <h1>{item.name || <Skeleton count={100}/>}</h1>
+          <h1>{item.name || <Skeleton count={100} />}</h1>;
           return (
             <div data-aos="flip-up" key={item._id} className="home-card">
               <h4 className="text-center">{item.name}</h4>
@@ -61,14 +60,19 @@ const Home = () => {
           Manage Inventories
         </button>
       </Link>
-
-      <div>
-        <h2>Our services:</h2>
+        <hr />
+      <div className="text-center mt-4">
+        <h2>
+          We proudly provided services to{" "}
+          <CountUp duration={4} end={4860} /> Customers
+        </h2>
       </div>
       {/* map ------------------------------------------ */}
-      <div className="text-center">
+      <div className="text-center mt-4">
         <h4>To see our location on map, Click the button below!</h4>
-        <Link to="/map"><button className="home-button">Map</button> </Link>
+        <Link to="/map">
+          <button className="home-button">Map</button>{" "}
+        </Link>
       </div>
     </div>
   );
