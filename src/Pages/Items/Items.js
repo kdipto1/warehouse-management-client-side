@@ -80,7 +80,7 @@ const Items = () => {
                 </td>
                 <td>
                   <Link to={`/inventory/${item?._id}`}>
-                    <button className="button-60">Details</button>
+                    <button className="button-60">Manage</button>
                   </Link>{" "}
                   <button
                     className="button-60"
