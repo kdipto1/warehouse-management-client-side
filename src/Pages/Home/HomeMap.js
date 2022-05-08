@@ -12,8 +12,8 @@ const HomeMap = () => {
   });
   return (
     <div>
-      <div className="maps-container ">
-        <div className="mt-5 d-flex map-container">
+      <div className="container">
+        <div className="mt-2 map-container">
           <h2>Our location:</h2>
           <MapContainer
             className="mx-auto"
@@ -21,7 +21,7 @@ const HomeMap = () => {
             zoom={13}
             scrollWheelZoom={false}
             // style={{ height: "100%", minHeight: "100%" }}
-            style={{ width: "350px", height: "350px" }}
+            style={{ width: "80vw", height: "80vh" }}
           >
             <TileLayer
               url="https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=LFYgaLPkja6NSkakY5kC"

@@ -50,7 +50,7 @@ const Login = () => {
     event.target.reset();
   };
   return (
-    <div className="text-center login-div mt-2">
+    <div className="text-center login-div mt-4">
       <h2>Login to your Account</h2>
       <form onSubmit={handleLogin}>
         <input type="email" name="email" required placeholder="Your Email" />

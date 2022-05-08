@@ -1,3 +1,6 @@
+.home{
+  overflow-x: hidden;
+}
 .home-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -8,6 +11,7 @@
   border-radius: 5px;
 }
 .home-card{
+  background-color: white;
   border: 0.5px solid gray;
   border-radius: 10px;
   padding: 10px;
@@ -89,7 +93,7 @@
   .home-cards {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 4%;
+    gap: 8px;
   }
   
 }

@@ -14,6 +14,7 @@ import MyItems from "./Pages/MyItems/MyItems";
 import Footer from "./Pages/Footer/Footer";
 import NotFound from "./Pages/NotFound/NotFound";
 import Blogs from "./Pages/Blogs/Blogs";
+import HomeMap from "./Pages/Home/HomeMap";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           Login
         </Route>
         <Route path="/myItems" element={<MyItems />}></Route>
+        <Route path="/map" element={<HomeMap/>}></Route>
         <Route path="*" element={<NotFound/>}></Route>
       </Routes>
       <Footer></Footer>

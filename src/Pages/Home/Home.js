@@ -24,7 +24,7 @@ const Home = () => {
     getItems();
   }, []);
   return (
-    <div>
+    <div className="home">
       <div>
         <img className="img-fluid" src={banner} alt="" />
       </div>
