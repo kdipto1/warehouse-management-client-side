@@ -51,7 +51,7 @@ const AddItem = () => {
       });
   };
   return (
-    <div className="container text-center">
+    <div className="container vh-100 text-center">
       <div className=" mx-auto">
         <h2>Add New Item:</h2>
         <form onSubmit={addNewItem}>

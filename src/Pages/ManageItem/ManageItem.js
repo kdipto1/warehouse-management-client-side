@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./ManageItem.css";
+import { GrDeliver } from "react-icons/gr";
 
 const ManageItem = () => {
   const params = useParams();
@@ -75,7 +76,7 @@ const ManageItem = () => {
   };
 
   return (
-    <div style={{overflowX: "hidden"}}>
+    <div style={{ overflowX: "hidden" }}>
       <div
         data-aos="fade-right"
         className="w-75 mx-auto mt-2 p-2 text-center manage-card"
@@ -97,7 +98,9 @@ const ManageItem = () => {
           className="d-block mx-auto manage-button"
           onClick={handleDelivery}
         >
-          Delivered
+          {" "}
+          <GrDeliver className="me-1" />
+          Deliver
         </button>
       </div>
       <div

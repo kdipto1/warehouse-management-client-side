@@ -6,6 +6,7 @@ import { Link, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import "./Item.css";
+import { MdDelete } from "react-icons/md";
 
 const Items = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -86,7 +87,7 @@ const Items = () => {
                     className="button-60"
                     onClick={() => deleteItem(item?._id)}
                   >
-                    Delete
+                    Delete <MdDelete/>
                   </button>
                 </td>
               </tr>
