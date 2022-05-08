@@ -16,6 +16,9 @@ const Home = () => {
       const url = `https://server-11-11.herokuapp.com/inventory?size=6`;
       try {
         const { data } = await axios.get(url);
+        if (!data) {
+          
+        }
         setItems(data);
       } catch (error) {
         console.log(error);
