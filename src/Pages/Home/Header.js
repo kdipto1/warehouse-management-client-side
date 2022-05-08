@@ -9,7 +9,7 @@ import auth from "../../firebase.init";
 const Header = () => {
   const [user, loading] = useAuthState(auth);
   if (loading) {
-    return
+    return;
   }
   return (
     <div>
@@ -50,7 +50,7 @@ const Header = () => {
                   <NavDropdown.Item as={Link} to="/myItems">
                     My Items
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/addItem" >
+                  <NavDropdown.Item as={Link} to="/addItem">
                     Add Item
                   </NavDropdown.Item>
                   <NavDropdown.Divider />

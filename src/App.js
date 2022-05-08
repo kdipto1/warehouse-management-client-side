@@ -47,7 +47,7 @@ function App() {
         >
           Add Item
         </Route>
-        <Route path="/blogs" element={<Blogs/>}></Route>
+        <Route path="/blogs" element={<Blogs />}></Route>
         <Route path="/login" element={<Login></Login>}>
           Login
         </Route>
@@ -55,8 +55,8 @@ function App() {
           Login
         </Route>
         <Route path="/myItems" element={<MyItems />}></Route>
-        <Route path="/map" element={<HomeMap/>}></Route>
-        <Route path="*" element={<NotFound/>}></Route>
+        <Route path="/map" element={<HomeMap />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
       <Footer></Footer>
       <ToastContainer />

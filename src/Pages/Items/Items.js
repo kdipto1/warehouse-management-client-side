@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import "./Item.css";
@@ -37,7 +37,6 @@ const Items = () => {
           if (data) {
             toast("Item Deleted");
             setNewItems(data);
-            // setItems()
           }
         });
       } catch (error) {
@@ -87,7 +86,7 @@ const Items = () => {
                     className="button-60"
                     onClick={() => deleteItem(item?._id)}
                   >
-                    Delete <MdDelete/>
+                    Delete <MdDelete />
                   </button>
                 </td>
               </tr>

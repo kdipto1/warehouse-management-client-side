@@ -6,10 +6,10 @@ import "leaflet/dist/leaflet.css";
 import banner from "../Images/banner.png";
 import CountUp from "react-countup";
 import Skeleton from "react-loading-skeleton";
+import Contact from "./Contact";
 
 const Home = () => {
   const [items, setItems] = useState([]);
-  // console.log(items);
   useEffect(() => {
     const getItems = async () => {
       const url = `https://server-11-11.herokuapp.com/inventory?size=6`;
@@ -60,20 +60,21 @@ const Home = () => {
           Manage Inventories
         </button>
       </Link>
-        <hr />
+      <hr />
+
       <div className="text-center mt-4">
         <h2>
-          We proudly provided services to{" "}
-          <CountUp duration={4} end={4860} /> Customers
+          We proudly provided services to <CountUp duration={4} end={4860} />{" "}
+          Customers
         </h2>
       </div>
-      {/* map ------------------------------------------ */}
       <div className="text-center mt-4">
         <h4>To see our location on map, Click the button below!</h4>
         <Link to="/map">
           <button className="home-button">Map</button>{" "}
         </Link>
       </div>
+      <Contact></Contact>
     </div>
   );
 };

@@ -9,7 +9,6 @@ const AddItem = () => {
   localStorage.setItem("email", `${user?.email}`);
   const addNewItem = (event) => {
     event.preventDefault();
-    // const email = event?.target?.email?.value;
     const email = localStorage.getItem("email");
     const name = event?.target?.name?.value;
     const supplier = event?.target?.supplier?.value;
@@ -55,14 +54,6 @@ const AddItem = () => {
       <div className=" mx-auto">
         <h2>Add New Item:</h2>
         <form onSubmit={addNewItem}>
-          {/* <input
-            className="form-control w-50 mb-1"
-            type="email"
-            value={user?.email}
-            disabled
-            name="email"
-            id=""
-          /> */}
           <br />
           <input
             className="w-50  mb-1"
