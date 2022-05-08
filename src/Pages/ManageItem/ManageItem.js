@@ -75,7 +75,7 @@ const ManageItem = () => {
   };
 
   return (
-    <div>
+    <div style={{overflowX: "hidden"}}>
       <div
         data-aos="fade-right"
         className="w-75 mx-auto mt-2 p-2 text-center manage-card"

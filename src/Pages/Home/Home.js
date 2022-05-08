@@ -2,11 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
-
 import "leaflet/dist/leaflet.css";
-
 import banner from "../Images/banner.png";
 import HomeMap from "./HomeMap";
+import Skeleton from "react-loading-skeleton";
 
 const Home = () => {
   const [items, setItems] = useState([]);
@@ -16,9 +15,6 @@ const Home = () => {
       const url = `https://server-11-11.herokuapp.com/inventory?size=6`;
       try {
         const { data } = await axios.get(url);
-        if (!data) {
-          
-        }
         setItems(data);
       } catch (error) {
         console.log(error);
@@ -28,6 +24,7 @@ const Home = () => {
   }, []);
   return (
     <div className="home">
+      
       <div>
         <img className="img-fluid" src={banner} alt="" />
       </div>
@@ -35,6 +32,7 @@ const Home = () => {
       <h2 className="text-center mt-5">Items:</h2>
       <div className="home-cards container mb-2">
         {items.map((item) => {
+          <h1>{item.name || <Skeleton count={100}/>}</h1>
           return (
             <div data-aos="flip-up" key={item._id} className="home-card">
               <h4 className="text-center">{item.name}</h4>
@@ -68,9 +66,10 @@ const Home = () => {
         <h2>Our services:</h2>
       </div>
       {/* map ------------------------------------------ */}
-      {/* <div className="map">
-      <HomeMap></HomeMap>
-      </div> */}
+      <div className="text-center">
+        <h4>To see our location on map, Click the button below!</h4>
+        <Link to="/map"><button className="home-button">Map</button> </Link>
+      </div>
     </div>
   );
 };

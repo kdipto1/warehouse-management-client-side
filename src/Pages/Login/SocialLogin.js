@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import Skeleton from 'react-loading-skeleton';
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
@@ -15,6 +16,7 @@ const SocialLogin = () => {
       navigate(from, { replace: true });
     }
     if (loading) {
+      <Skeleton count={6} />
       return;
     }
     if (error) {

@@ -9,6 +9,7 @@ import auth from "../../firebase.init";
 import SocialLogin from "./SocialLogin";
 import "./Login.css";
 import axios from "axios";
+import Skeleton from "react-loading-skeleton";
 
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -22,6 +23,7 @@ const Login = () => {
       toast(error?.message);
     }
     if (loading) {
+      <Skeleton count={6}/>
       return;
     }
     if (user || user1) {
