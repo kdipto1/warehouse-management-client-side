@@ -19,7 +19,6 @@ const MyItems = () => {
     }
     const getMyItems = async () => {
       const email = user?.email;
-      // console.log(email);
       const url = `https://server-11-11.herokuapp.com/inventoryUser?email=${email}`;
       try {
         const { data } = await axios.get(url, {
@@ -43,8 +42,8 @@ const MyItems = () => {
     getMyItems();
   }, [user, newItems, navigate, loading]);
   const deleteItem = async (id) => {
-    const procced = window.confirm("Delete");
-    if (!procced) {
+    const agree = window.confirm("Delete");
+    if (!agree) {
       return;
     } else {
       const url = `https://server-11-11.herokuapp.com/inventory/${id}`;
@@ -55,7 +54,6 @@ const MyItems = () => {
           if (data) {
             console.log(data);
             setNewItems(data);
-            // setItems()
           }
         });
       } catch (error) {
