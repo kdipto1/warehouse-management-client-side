@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import SocialLogin from './SocialLogin';
@@ -44,7 +44,7 @@ const Register = () => {
         />
         <br />
         <input
-          className='my-2'
+          className="my-2"
           type="password"
           name="password"
           id=""
@@ -52,13 +52,15 @@ const Register = () => {
           required
         />
         <br />
-        <input
-          type="submit"
-          value="Register"
-          className="btn btn-primary"
-        />
+        <input type="submit" value="Register" className="btn btn-primary" />
       </form>
-      <hr  className="w-50 mx-auto"/>
+      <p className="text-center">
+        Already have an account?{" "}
+        <Link style={{ textDecoration: "none" }} to="/login">
+          Please Login
+        </Link>{" "}
+      </p>
+      <hr className="w-50 mx-auto" />
       <SocialLogin></SocialLogin>
     </div>
   );
