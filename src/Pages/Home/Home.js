@@ -65,7 +65,7 @@ const Home = () => {
       <div>
         <h2>Our services:</h2>
       </div>
-      <HomeMap></HomeMap>
+      {/* <HomeMap></HomeMap> */}
       
     </div>
   );
