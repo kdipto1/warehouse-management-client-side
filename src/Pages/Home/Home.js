@@ -2,23 +2,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+
 import banner from "../Images/banner.png";
+import HomeMap from "./HomeMap";
 
 const Home = () => {
-  const position = [23.79377280479345, 90.40535937216653];
-  const center = [23.79377280479345, 90.40535937216653];
   const [items, setItems] = useState([]);
-  const markerIcon = new L.Icon({
-    iconUrl: require("../Icons/pointer.png"),
-    iconSize: [100, 200],
-  });
   // console.log(items);
   useEffect(() => {
     const getItems = async () => {
-      const url = `https://server-11-11.herokuapp.com/inventory?size=6`;
+      const url = `http://localhost:5000/inventory?size=6`;
       try {
         const { data } = await axios.get(url);
         setItems(data);
@@ -43,7 +38,7 @@ const Home = () => {
               <img
                 className="d-block mx-auto"
                 loading="lazy"
-                style={{ width: "300px" }}
+                style={{ width: "280px" }}
                 src={item.image}
                 alt=""
               />
@@ -70,27 +65,8 @@ const Home = () => {
       <div>
         <h2>Our services:</h2>
       </div>
-      <div className="maps-container ">
-        <div className="mt-5 d-flex map-container flex-column">
-          <h2>Our location:</h2>
-          <MapContainer
-            className="mx-auto"
-            center={center}
-            zoom={13}
-            scrollWheelZoom={false}
-            // style={{ height: "100%", minHeight: "100%" }}
-            style={{ width: "100%", height: "350px" }}
-          >
-            <TileLayer
-              url="https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=LFYgaLPkja6NSkakY5kC"
-              attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
-            />
-            <Marker icon={markerIcon} position={position}>
-              <Popup>Programming Hero, Dhaka</Popup>
-            </Marker>
-          </MapContainer>
-        </div>
-      </div>
+      <HomeMap></HomeMap>
+      
     </div>
   );
 };

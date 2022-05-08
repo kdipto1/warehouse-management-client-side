@@ -1,21 +1,26 @@
 import axios from "axios";
+import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import "./MyItems.css";
 
 const MyItems = () => {
-  const [user] = useAuthState(auth);
+  const [user, loading, error] = useAuthState(auth);
   const [items, setItems] = useState([]);
   const [newItems, setNewItems] = useState([]);
+  const navigate = useNavigate()
   useEffect(() => {
+    if (loading) {
+      return;
+    }
     const getMyItems = async () => {
       const email = user?.email;
       // console.log(email);
-      const url = `https://server-11-11.herokuapp.com/inventoryUser?email=${email}`;
+      const url = `http://localhost:5000/inventoryUser?email=${email}`;
       try {
         const { data } = await axios.get(url, {
           headers: {
@@ -27,27 +32,38 @@ const MyItems = () => {
         console.log(data);
         setItems(data);
       } catch (error) {
-        console.log(error.response.data.message);
-        toast(error.response.data.message);
+        console.log(error);
+        if (error.response.status === 403) {
+          toast(error.response.data.message);
+          signOut(auth)
+          navigate("/login")
+        }
       }
     };
     getMyItems();
-  }, [user, newItems]);
+  }, [user, newItems, navigate,loading]);
   const deleteItem = async (id) => {
-    console.log(id);
-    const url = `https://server-11-11.herokuapp.com/inventory/${id}`;
-    try {
-      await axios.delete(url, { id }).then((response) => {
-        const { data } = response;
-        if (data) {
-          console.log(data);
-          setNewItems(data);
-          // setItems()
-        }
-      });
-    } catch (error) {
-      console.log(error);
+    const procced = window.confirm("Delete")
+    if (!procced) {
+      return;
     }
+    else {
+      const url = `http://localhost:5000/inventory/${id}`;
+      console.log(id);
+      try {
+        await axios.delete(url, { id }).then((response) => {
+          const { data } = response;
+          if (data) {
+            console.log(data);
+            setNewItems(data);
+            // setItems()
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    
   };
   return (
     <div className="container">

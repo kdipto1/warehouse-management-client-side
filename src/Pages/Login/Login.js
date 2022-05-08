@@ -27,7 +27,7 @@ const Login = () => {
     if (user || user1) {
       toast("Login Successful");
       console.log(user1);
-      const url = "https://server-11-11.herokuapp.com/login";
+      const url = "http://localhost:5000/login";
       axios
         .post(url, { email: user1?.email })
         .then((response) => {
@@ -56,13 +56,14 @@ const Login = () => {
         <input type="email" name="email" required placeholder="Your Email" />
         <br />
         <input
+          className="mt-2"
           type="password"
           name="password"
           required
           placeholder="Your Password"
         />
         <br />
-        <input type="submit" value="Login" className="button-40" />
+        <input type="submit" value="Login" className="btn btn-primary mt-2" />
       </form>
       <p>
         Don't have an account, Please <Link to="/register">Register</Link>{" "}

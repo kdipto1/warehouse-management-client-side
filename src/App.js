@@ -21,7 +21,14 @@ function App() {
         <Route path="/" element={<Home></Home>}>
           Home
         </Route>
-        <Route path="/inventory/:id" element={<ManageItem />}>
+        <Route
+          path="/inventory/:id"
+          element={
+            <RequireAuth>
+              <ManageItem />
+            </RequireAuth>
+          }
+        >
           Manage Item
         </Route>
         <Route path="/inventory" element={<Items />}>
@@ -43,7 +50,7 @@ function App() {
         <Route path="/register" element={<Register />}>
           Login
         </Route>
-        <Route path="/myItems" element={<MyItems/>}></Route>
+        <Route path="/myItems" element={<MyItems />}></Route>
       </Routes>
       <Footer></Footer>
       <ToastContainer />

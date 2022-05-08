@@ -55,7 +55,7 @@
 }
 
 
-.maps-container{
+/* .maps-container{
   position: relative;
 	background: #000;
 	z-index: 1;
@@ -66,7 +66,7 @@
   position: absolute;
 	top: 0; left: 0;
 	background: yellow;
-}
+} */
 /* .leaflet-container {
   position: absolute;
   z-index: -1;

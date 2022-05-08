@@ -14,7 +14,7 @@ const Items = () => {
   const [newItems, setNewItems] = useState([]);
   useEffect(() => {
     const getItems = async () => {
-      const url = `https://server-11-11.herokuapp.com/inventory`;
+      const url = `http://localhost:5000/inventory`;
       try {
         const { data } = await axios.get(url);
         setItems(data);
@@ -25,18 +25,23 @@ const Items = () => {
     getItems();
   }, [newItems, user, loading]);
   const deleteItem = async (id) => {
-    const url = `https://server-11-11.herokuapp.com/inventory/${id}`;
-    try {
-      await axios.delete(url, { id }).then((response) => {
-        const { data } = response;
-        if (data) {
-          toast("Item Deleted");
-          setNewItems(data);
-          // setItems()
-        }
-      });
-    } catch (error) {
-      console.log(error);
+    const verify = window.confirm("Delete");
+    if (!verify) {
+      return;
+    } else {
+      const url = `http://localhost:5000/inventory/${id}`;
+      try {
+        await axios.delete(url, { id }).then((response) => {
+          const { data } = response;
+          if (data) {
+            toast("Item Deleted");
+            setNewItems(data);
+            // setItems()
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   return (
