@@ -1,27 +1,23 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import "leaflet/dist/leaflet.css";
 import banner from "../Images/banner.png";
 import CountUp from "react-countup";
-import Skeleton from "react-loading-skeleton";
 import Contact from "./Contact";
+import Loading from "../Utility/Loading";
 
 const Home = () => {
-  const [items, setItems] = useState([]);
-  useEffect(() => {
-    const getItems = async () => {
-      const url = `https://server-11-11.herokuapp.com/inventory?size=6`;
-      try {
-        const { data } = await axios.get(url);
-        setItems(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getItems();
-  }, []);
+  const { data: items, isLoading } = useQuery("homeItems", () =>
+    fetch("https://server-11-11.herokuapp.com/inventory?size=6").then((res) =>
+      res.json()
+    )
+  );
+
+  if (isLoading) {
+    return <Loading/>
+  }
   return (
     <div className="home">
       <div>
@@ -31,7 +27,6 @@ const Home = () => {
       <h2 className="text-center mt-5">Items:</h2>
       <div className="home-cards container mb-2">
         {items.map((item) => {
-          <h1>{item.name || <Skeleton count={100} />}</h1>;
           return (
             <div data-aos="flip-up" key={item._id} className="home-card">
               <h4 className="text-center">{item.name}</h4>
