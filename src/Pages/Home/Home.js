@@ -16,7 +16,7 @@ const Home = () => {
   );
 
   if (isLoading) {
-    return <Loading/>
+    return <Loading />;
   }
   return (
     <div className="home">
@@ -28,7 +28,14 @@ const Home = () => {
       <div className="home-cards container mb-2">
         {items.map((item) => {
           return (
-            <div data-aos="flip-up" key={item._id} className="home-card">
+            <div
+              data-aos="flip-up"
+              data-aos-delay="200"
+              data-aos-duration="2000"
+              data-aos-mirror="false"
+              key={item._id}
+              className="home-card"
+            >
               <h4 className="text-center">{item.name}</h4>
               <img
                 className="d-block mx-auto"
